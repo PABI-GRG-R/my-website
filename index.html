@@ -3,169 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Design Portfolio</title>
+    <title>Digital Artisan | Creative Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="glitch" data-text="Digital Craftsman">Digital Craftsman</h1>
-            <p class="subtitle">Exploring the Art of Modern Design</p>
+    <!-- Immersive Entry -->
+    <div class="immersive-entry">
+        <div class="cursor-follower"></div>
+        <div class="entry-content">
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="Digital_Artisan">Digital_Artisan</h1>
+                <div class="glitch-desc">where code meets creativity</div>
+            </div>
+            <div class="scroll-indicator">
+                <span>scroll to explore</span>
+                <div class="scroll-arrow"></div>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <nav class="floating-nav">
-        <ul>
-            <li><a href="#foundations">Foundations</a></li>
-            <li><a href="#typography">Typography</a></li>
-            <li><a href="#reflection">Reflection</a></li>
-        </ul>
+    <!-- Orbital Navigation -->
+    <nav class="orbital-nav">
+        <div class="nav-center"></div>
+        <a href="#craft" class="nav-item" data-label="Craft"><i class="fas fa-code"></i></a>
+        <a href="#canvas" class="nav-item" data-label="Canvas"><i class="fas fa-palette"></i></a>
+        <a href="#letters" class="nav-item" data-label="Letters"><i class="fas fa-font"></i></a>
+        <a href="#story" class="nav-item" data-label="Story"><i class="fas fa-book"></i></a>
     </nav>
 
-    <main>
-        <!-- Core Skills Section -->
-        <section id="foundations" class="project-section">
-            <h2 class="section-title">Digital Design Foundations</h2>
+    <!-- Main Content -->
+    <main class="universe">
+        <!-- Craft Section -->
+        <section id="craft" class="dimension craft-dimension">
+            <div class="dimension-title">
+                <h2>The Craft</h2>
+                <div class="dimension-subtitle">mastering digital foundations</div>
+            </div>
             
-            <!-- Web Development -->
-            <div class="project-card">
-                <div class="content">
-                    <h3>Web Development Essentials</h3>
-                    <p>My journey into web development revealed the power of modern frameworks and responsive design. Mastering HTML5 and CSS Grid opened new possibilities for creating adaptive layouts that work seamlessly across all devices. Version control through Git became an essential tool, teaching me the importance of systematic development and collaborative workflows.</p>
-                    <div class="expand-icon">
-                        <i class="fas fa-code"></i>
+            <div class="craft-container">
+                <article class="craft-card" data-category="Development">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Code Architecture</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Exploring the art of structured web development through HTML5 and CSS Grid. Each project is a journey in creating responsive, adaptive layouts that seamlessly transition across devices. Version control through Git has become my trusted companion in this digital craftsmanship.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </article>
 
-            <!-- Design Principles -->
-            <div class="project-card">
-                <div class="content">
-                    <h3>Visual Design Principles</h3>
-                    <p>Understanding CARP (Contrast, Alignment, Repetition, Proximity) principles revolutionized my approach to design composition. These fundamental elements serve as the building blocks for creating visually compelling and effective layouts that guide users through information naturally and intuitively.</p>
-                    <div class="expand-icon">
-                        <i class="fas fa-palette"></i>
+                <article class="craft-card" data-category="Design">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-vector-square"></i>
+                            <h3>Visual Symphony</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Embracing CARP principles to orchestrate visual harmony. Through contrast, alignment, repetition, and proximity, I craft experiences that guide users naturally through digital landscapes, creating intuitive pathways through information.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </article>
 
-            <!-- Creative Process -->
-            <div class="project-card">
-                <div class="content">
-                    <h3>Creative Process</h3>
-                    <p>The intersection of technical skills and artistic vision has shaped my understanding of digital design. Through experimentation and iteration, I've learned to balance aesthetic appeal with functional requirements, creating designs that not only look beautiful but serve their intended purpose effectively.</p>
-                    <div class="expand-icon">
-                        <i class="fas fa-lightbulb"></i>
+                <article class="craft-card" data-category="Innovation">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Digital Alchemy</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Merging technical precision with creative vision, transforming raw concepts into polished digital experiences. Each project is an opportunity to push boundaries and explore new possibilities in the digital realm.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Typography Systems -->
-        <section id="typography" class="project-section">
-            <h2 class="section-title">Typography in Motion</h2>
-            <div class="typography-grid">
-                <!-- Linear Flow -->
-                <div class="typo-card">
-                    <h3>01 / Linear Flow</h3>
-                    <div class="typo-image">
-                        <img src="/api/placeholder/400/300" alt="Linear Typography System">
-                    </div>
-                    <p>A dynamic arrangement that guides the eye through content in a natural, flowing progression. Text elements are positioned along a clear path, creating rhythm and movement while maintaining readability.</p>
-                </div>
-
-                <!-- Circular Harmony -->
-                <div class="typo-card">
-                    <h3>02 / Circular Harmony</h3>
-                    <div class="typo-image">
-                        <img src="/api/placeholder/400/300" alt="Circular Typography System">
-                    </div>
-                    <p>Typography arranged in concentric circles creates a sense of unity and completeness. This system emphasizes the cyclical nature of information and creates an engaging visual journey around a central focal point.</p>
-                </div>
-
-                <!-- Expanding Universe -->
-                <div class="typo-card">
-                    <h3>03 / Expanding Universe</h3>
-                    <div class="typo-image">
-                        <img src="/api/placeholder/400/300" alt="Expanding Typography System">
-                    </div>
-                    <p>Text elements grow outward from a central point, creating a sense of depth and dimension. This approach captures the expanding nature of ideas and information in visual form.</p>
-                </div>
-
-                <!-- Controlled Chaos -->
-                <div class="typo-card">
-                    <h3>04 / Controlled Chaos</h3>
-                    <div class="typo-image">
-                        <img src="/api/placeholder/400/300" alt="Dynamic Typography System">
-                    </div>
-                    <p>A carefully orchestrated arrangement that appears random but maintains visual balance. This system creates energy and excitement while preserving the hierarchy of information.</p>
-                </div>
-
-                <!-- Modular Matrix -->
-                <div class="typo-card">
-                    <h3>05 / Modular Matrix</h3>
-                    <div class="typo-image">
-                        <img src="/api/placeholder/400/300" alt="Grid Typography System">
-                    </div>
-                    <p>A structured grid system that organizes content into clear, logical units. This approach ensures consistency and professional presentation while maintaining flexible arrangement options.</p>
-                </div>
-
-                <!-- Rhythmic Blocks -->
-                <div class="typo-card">
-                    <h3>06 / Rhythmic Blocks</h3>
-                    <div class="typo-image">
-                        <img src="/api/placeholder/400/300" alt="Block Typography System">
-                    </div>
-                    <p>Typography broken into repeating modular units creates visual rhythm and structure. This system establishes patterns that guide readers through complex information effectively.</p>
-                </div>
-
-                <!-- Dynamic Flow -->
-                <div class="typo-card">
-                    <h3>07 / Dynamic Flow</h3>
-                    <div class="typo-image">
-                        <img src="/api/placeholder/400/300" alt="Flow Typography System">
-                    </div>
-                    <p>A system that creates movement through gradual transitions in size and weight. This approach guides viewers naturally through information while maintaining visual interest.</p>
-                </div>
-
-                <!-- Balanced Symmetry -->
-                <div class="typo-card">
-                    <h3>08 / Balanced Symmetry</h3>
-                    <div class="typo-image">
-                        <img src="/api/placeholder/400/300" alt="Symmetric Typography System">
-                    </div>
-                    <p>A mirrored arrangement that creates perfect balance and harmony. This classical approach lends authority and elegance to professional presentations.</p>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- Design Journey Reflection -->
-        <section id="reflection" class="project-section reflection-section">
-            <h2 class="section-title">Design Journey Reflection</h2>
-            <div class="project-card">
-                <div class="content">
-                    <p>My evolution as a digital designer has been a transformative journey that has challenged and reshaped my understanding of visual communication in the digital age. This path has led me through the technical foundations of web development, the artistic principles of design, and the nuanced world of typography, each element contributing to a deeper appreciation for the craft of digital design.</p>
-                    
-                    <p>The technical aspects of web development initially seemed daunting, but they quickly became the backbone of my design practice. Learning to write clean, efficient code taught me the importance of structure and organization in design. The principles of responsive design opened my eyes to the necessity of creating flexible, adaptable layouts that serve users across all devices. This technical foundation has become invaluable, allowing me to bridge the gap between creative vision and practical implementation.</p>
-                    
-                    <p>Exploring design principles, particularly CARP, transformed my approach to visual composition. These fundamental elements became my toolkit for creating order from chaos, helping me understand how subtle adjustments in contrast can direct attention, how alignment creates unity, how repetition builds rhythm, and how proximity guides understanding. Through countless iterations and experiments, I discovered that effective design is not just about aesthetic appeal but about creating meaningful connections between elements that enhance user comprehension.</p>
-                    
-                    <p>Typography emerged as a fascinating intersection of technical precision and artistic expression. Each typeface choice, spacing decision, and hierarchical arrangement became an opportunity to enhance communication and user experience. The various typography systems I explored revealed how different arrangements can evoke distinct emotional responses and guide users through information in unique ways. This understanding has become central to my approach to design, influencing how I think about content organization and visual hierarchy.</p>
-                    
-                    <p>Looking forward, I see design as an ever-evolving discipline that requires continuous learning and adaptation. The foundation I've built through these experiences has equipped me with both technical capabilities and design sensibilities, but I recognize that this is just the beginning. The digital landscape continues to evolve, bringing new challenges and opportunities for innovation in design. My journey has taught me that great design is about solving problems creatively while maintaining a deep respect for user needs and experiences.</p>
-                    
-                    <div class="expand-icon">
-                        <i class="fas fa-book-open"></i>
+        <!-- Typography Exploration -->
+        <section id="letters" class="dimension type-dimension">
+            <div class="dimension-title">
+                <h2>Type Laboratory</h2>
+                <div class="dimension-subtitle">experiments in visual language</div>
+            </div>
+
+            <div class="type-grid">
+                <article class="type-experiment" data-effect="magnetic">
+                    <h3>01 / Magnetic Flow</h3>
+                    <div class="experiment-visual">
+                        <div class="magnetic-text">Experience</div>
+                        <div class="magnetic-particles"></div>
                     </div>
-                </div>
+                    <p>Letters drawn together by invisible forces, creating dynamic compositions that respond to user interaction.</p>
+                </article>
+
+                <article class="type-experiment" data-effect="constellation">
+                    <h3>02 / Constellation</h3>
+                    <div class="experiment-visual">
+                        <div class="star-field"></div>
+                        <div class="constellation-text">Connect</div>
+                    </div>
+                    <p>Typography that forms connections, like stars in the night sky, revealing patterns through movement.</p>
+                </article>
+
+                <article class="type-experiment" data-effect="liquid">
+                    <h3>03 / Liquid State</h3>
+                    <div class="experiment-visual">
+                        <div class="liquid-container">
+                            <div class="liquid-text">Flow</div>
+                        </div>
+                    </div>
+                    <p>Characters that flow and morph, challenging the boundaries between solid and fluid forms.</p>
+                </article>
+
+                <article class="type-experiment" data-effect="quantum">
+                    <h3>04 / Quantum Leap</h3>
+                    <div class="experiment-visual">
+                        <div class="quantum-field"></div>
+                        <div class="quantum-text">Transform</div>
+                    </div>
+                    <p>Letters existing in multiple states, shifting and transforming based on observation.</p>
+                </article>
+
+                <article class="type-experiment" data-effect="neural">
+                    <h3>05 / Neural Network</h3>
+                    <div class="experiment-visual">
+                        <div class="neural-grid"></div>
+                        <div class="neural-text">Learn</div>
+                    </div>
+                    <p>Typography that evolves through connected nodes, creating organic patterns of information.</p>
+                </article>
+
+                <article class="type-experiment" data-effect="dimensional">
+                    <h3>06 / Fourth Dimension</h3>
+                    <div class="experiment-visual">
+                        <div class="dimensional-space"></div>
+                        <div class="dimensional-text">Expand</div>
+                    </div>
+                    <p>Text that transcends traditional space, exploring depth and time in typography.</p>
+                </article>
+
+                <article class="type-experiment" data-effect="quantum">
+                    <h3>07 / Entropy</h3>
+                    <div class="experiment-visual">
+                        <div class="entropy-field"></div>
+                        <div class="entropy-text">Chaos</div>
+                    </div>
+                    <p>Characters that break down and reassemble, finding order in apparent chaos.</p>
+                </article>
+
+                <article class="type-experiment" data-effect="harmonic">
+                    <h3>08 / Harmonic Motion</h3>
+                    <div class="experiment-visual">
+                        <div class="harmonic-waves"></div>
+                        <div class="harmonic-text">Resonate</div>
+                    </div>
+                    <p>Typography that moves in waves, creating visual rhythm through synchronized motion.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Journey Reflection -->
+        <section id="story" class="dimension story-dimension">
+            <div class="dimension-title">
+                <h2>Digital Odyssey</h2>
+                <div class="dimension-subtitle">a journey through pixels and code</div>
+            </div>
+
+            <div class="story-scroll">
+                <article class="story-chapter">
+                    <p>My evolution in digital design has been a transformative expedition through uncharted territories of creativity and technology. Each project has been a stepping stone, each challenge a lesson in the art of digital craftsmanship.</p>
+                </article>
+
+                <article class="story-chapter">
+                    <p>The technical landscape of web development initially loomed like a mountain range on the horizon. Yet, with each line of code mastered, each responsive layout crafted, the terrain became familiar territory. Git became my compass, guiding me through the collaborative wilderness of modern development.</p>
+                </article>
+
+                <article class="story-chapter">
+                    <p>Design principles emerged as the constellations by which I navigate. CARP became more than guidelines – they transformed into a natural language through which I communicate in the digital realm. Each project adds new phrases to this vocabulary, enriching the dialogue between design and functionality.</p>
+                </article>
+
+                <article class="story-chapter">
+                    <p>Typography revealed itself as a profound form of digital expression. Each typeface became a voice, each layout a stage, each interaction a performance. Through experimental typography, I've learned to orchestrate these elements into cohesive experiences that resonate with users.</p>
+                </article>
+
+                <article class="story-chapter">
+                    <p>Looking forward, I see the digital horizon expanding endlessly. The foundation built through these experiences has equipped me with both technical prowess and creative insight, yet I recognize that in this ever-evolving digital landscape, every endpoint is merely a new beginning.</p>
+                </article>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>Crafted with <i class="fas fa-heart"></i> by Dhiraj | 2024</p>
+    <!-- Interactive Footer -->
+    <footer class="cosmic-footer">
+        <div class="constellation-signature">
+            Crafted by <span class="signature">Dhiraj</span>
+            <div class="year-orbit">
+                <span class="year">2024</span>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
