@@ -1,15 +1,60 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all major components
-    initializeGlitchEffect();
+    initializeCursor();
+    initializeGlitch();
     initializeNavigation();
-    initializeScrollAnimations();
-    initializeCardInteractions();
-    initializeTypographyGrid();
+    initializeCards();
+    initializeTypeExperiments();
+    initializeStoryScroll();
+    initializeParallax();
 });
 
-// Glitch Effect for Hero Title
-function initializeGlitchEffect() {
+// Custom Cursor
+function initializeCursor() {
+    const cursor = document.querySelector('.cursor-follower');
+    if (!cursor) return;
+
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Smooth cursor animation
+    function animateCursor() {
+        const dx = mouseX - cursorX;
+        const dy = mouseY - cursorY;
+        
+        cursorX += dx * 0.1;
+        cursorY += dy * 0.1;
+        
+        cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+        
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    // Add hover effect for interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .craft-card, .type-experiment');
+    
+    interactiveElements.forEach(elem => {
+        elem.addEventListener('mouseenter', () => {
+            cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) scale(1.5)`;
+            cursor.style.background = 'var(--accent)';
+        });
+
+        elem.addEventListener('mouseleave', () => {
+            cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) scale(1)`;
+            cursor.style.background = 'var(--accent)';
+        });
+    });
+}
+
+// Glitch Effect
+function initializeGlitch() {
     const glitchText = document.querySelector('.glitch');
     if (!glitchText) return;
 
@@ -20,168 +65,171 @@ function initializeGlitchEffect() {
         isGlitching = true;
 
         let iterations = 0;
-        const maxIterations = 10;
+        const maxIterations = 15;
         
         const glitchInterval = setInterval(() => {
-            glitchText.style.transform = `translate(${Math.random() * 3}px, ${Math.random() * 3}px)`;
+            glitchText.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
             glitchText.style.textShadow = `
-                ${Math.random() * 3}px ${Math.random() * 3}px 0 rgba(255,0,0,0.75),
-                ${Math.random() * -3}px ${Math.random() * -3}px 0 rgba(0,255,255,0.75)
+                ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px 0 rgba(255,0,0,0.75),
+                ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px 0 rgba(0,255,255,0.75)
             `;
 
             iterations++;
             if (iterations >= maxIterations) {
                 clearInterval(glitchInterval);
                 glitchText.style.transform = 'none';
-                glitchText.style.textShadow = 'none';
+                glitchText.style.textShadow = '';
                 isGlitching = false;
             }
         }, 50);
     }
 
-    // Trigger glitch on hover
+    // Trigger glitch on hover and randomly
     glitchText.addEventListener('mouseenter', triggerGlitch);
-
-    // Random glitch every 5-10 seconds
     setInterval(() => {
-        if (Math.random() > 0.7) triggerGlitch();
-    }, 5000);
+        if (Math.random() > 0.95) triggerGlitch();
+    }, 3000);
 }
 
-// Smooth Scrolling Navigation
+// Orbital Navigation
 function initializeNavigation() {
-    const nav = document.querySelector('.floating-nav');
-    if (!nav) return;
-
-    // Smooth scroll for navigation links
-    nav.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') {
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = e.target.getAttribute('href');
+            const targetId = item.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                targetSection.scrollIntoView({ behavior: 'smooth' });
             }
-        }
+        });
     });
 
-    // Hide/Show navigation based on scroll direction
-    let lastScrollTop = 0;
-    let scrollTimeout;
-
+    // Update active nav item based on scroll position
     window.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
+        const sections = document.querySelectorAll('.dimension');
+        const scrollPosition = window.scrollY;
 
-        scrollTimeout = setTimeout(() => {
-            const currentScroll = window.pageYOffset;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionBottom = sectionTop + section.offsetHeight;
             
-            // Determine scroll direction
-            if (currentScroll > lastScrollTop && currentScroll > 100) {
-                // Scrolling down
-                nav.style.transform = 'translate(-50%, -100%)';
-            } else {
-                // Scrolling up
-                nav.style.transform = 'translate(-50%, 0)';
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                const targetNav = document.querySelector(`a[href="#${section.id}"]`);
+                if (targetNav) {
+                    navItems.forEach(item => item.classList.remove('active'));
+                    targetNav.classList.add('active');
+                }
             }
-
-            lastScrollTop = currentScroll;
-        }, 50);
+        });
     });
 }
 
-// Scroll Animations
-function initializeScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-    };
+// Card Interactions
+function initializeCards() {
+    const cards = document.querySelectorAll('.craft-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.querySelector('.card-inner').style.transform = 'rotateY(180deg)';
+        });
 
+        card.addEventListener('mouseleave', () => {
+            card.querySelector('.card-inner').style.transform = 'rotateY(0)';
+        });
+    });
+}
+
+// Typography Experiments
+function initializeTypeExperiments() {
+    const experiments = document.querySelectorAll('.type-experiment');
+    
+    experiments.forEach(experiment => {
+        const effect = experiment.dataset.effect;
+        const visual = experiment.querySelector('.experiment-visual');
+        
+        switch(effect) {
+            case 'magnetic':
+                initializeMagneticEffect(visual);
+                break;
+            case 'constellation':
+                initializeConstellationEffect(visual);
+                break;
+            case 'liquid':
+                initializeLiquidEffect(visual);
+                break;
+            // Add more effects as needed
+        }
+    });
+}
+
+// Example of a magnetic effect
+function initializeMagneticEffect(element) {
+    const text = element.querySelector('.magnetic-text');
+    if (!text) return;
+
+    element.addEventListener('mousemove', (e) => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const deltaX = (x - centerX) / 10;
+        const deltaY = (y - centerY) / 10;
+        
+        text.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    });
+
+    element.addEventListener('mouseleave', () => {
+        text.style.transform = 'translate(0, 0)';
+    });
+}
+
+// Story Scroll Animations
+function initializeStoryScroll() {
+    const storyChapters = document.querySelectorAll('.story-chapter');
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.2
+    });
 
-    // Observe all sections and cards
-    document.querySelectorAll('.project-section, .project-card, .typo-card').forEach(element => {
-        element.classList.add('fade-in');
-        observer.observe(element);
+    storyChapters.forEach(chapter => {
+        observer.observe(chapter);
     });
 }
 
-// Project Card Interactions
-function initializeCardInteractions() {
-    const cards = document.querySelectorAll('.project-card');
+// Parallax Effect
+function initializeParallax() {
+    const parallaxElements = document.querySelectorAll('.dimension-title, .craft-card, .type-experiment');
     
-    cards.forEach(card => {
-        const expandIcon = card.querySelector('.expand-icon');
-        if (!expandIcon) return;
-
-        card.addEventListener('mouseenter', () => {
-            expandIcon.style.transform = 'rotate(90deg)';
-        });
-
-        card.addEventListener('mouseleave', () => {
-            expandIcon.style.transform = 'rotate(0)';
-        });
-
-        // Add click interaction
-        card.addEventListener('click', () => {
-            const content = card.querySelector('p');
-            if (!content) return;
-
-            // Toggle expanded state
-            if (card.classList.contains('expanded')) {
-                card.style.maxHeight = null;
-                card.classList.remove('expanded');
-            } else {
-                card.style.maxHeight = content.scrollHeight + 100 + 'px';
-                card.classList.add('expanded');
+    window.addEventListener('scroll', () => {
+        parallaxElements.forEach(element => {
+            const speed = element.dataset.parallax || 0.2;
+            const rect = element.getBoundingClientRect();
+            const scrolledIntoView = window.scrollY + window.innerHeight - rect.top;
+            
+            if (scrolledIntoView > 0 && window.scrollY < rect.bottom) {
+                element.style.transform = `translateY(${scrolledIntoView * speed}px)`;
             }
         });
     });
 }
 
-// Typography Grid Interactions
-function initializeTypographyGrid() {
-    const typoCards = document.querySelectorAll('.typo-card');
-    
-    typoCards.forEach(card => {
-        // Add hover effect for images
-        const image = card.querySelector('img');
-        if (image) {
-            // Handle image loading
-            image.addEventListener('load', () => {
-                image.classList.add('loaded');
-            });
-
-            // Add error handling
-            image.addEventListener('error', () => {
-                image.src = '/api/placeholder/400/300';
-            });
-        }
-
-        // Add interactive hover states
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-            card.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-        });
-    });
+// Utility Functions
+function lerp(start, end, factor) {
+    return start + (end - start) * factor;
 }
 
-// Utility function for debouncing
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -194,13 +242,7 @@ function debounce(func, wait) {
     };
 }
 
-// Handle window resize events
+// Handle window resize
 window.addEventListener('resize', debounce(() => {
-    // Reset any necessary layout calculations
-    document.querySelectorAll('.project-card.expanded').forEach(card => {
-        const content = card.querySelector('p');
-        if (content) {
-            card.style.maxHeight = content.scrollHeight + 100 + 'px';
-        }
-    });
+    // Reset any necessary calculations
 }, 250));
